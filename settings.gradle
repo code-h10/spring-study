@@ -1,0 +1,5 @@
+rootProject.name = 'study'
+include 'oauth2'
+include 'football'
+include 'common'
+
