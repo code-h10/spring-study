@@ -1,5 +1,10 @@
 spring:
-      security:
+    datasource:
+      url: jdbc:mysql://localhost:3306/employees?
+      username: root
+      password: ghkd6016
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    security:
           user:
             name: 1234
             password: 1234
