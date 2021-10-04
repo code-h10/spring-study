@@ -2,7 +2,8 @@ plugins {
     id 'java'
 }
 
-version 'unspecified'
+group 'com.spring'
+version '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
