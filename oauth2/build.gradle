@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.9'
     //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     //testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }

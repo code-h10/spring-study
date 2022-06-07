@@ -16,6 +16,5 @@ mybatis:
   mapper-locations: mybatis-mapper/*.xml
   lazy-initialization: true
   configuration:
-    map-underscore-to-camel-case: true
     default-fetch-size: 100
     default-statement-timeout: 30

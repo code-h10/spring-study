@@ -3,4 +3,5 @@ include 'oauth2'
 include 'football'
 include 'common'
 include 'batch'
+include 'sportch'
 

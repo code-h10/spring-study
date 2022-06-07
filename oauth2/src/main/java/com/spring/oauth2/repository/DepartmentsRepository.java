@@ -1,19 +1,17 @@
-package com.spring.batch.repository;
+package com.spring.oauth2.repository;
 
-import com.spring.batch.domain.DeptManager;
+
+import com.spring.oauth2.domain.Department;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 @Repository
 public interface DepartmentsRepository {
 
-    List<Map> getDepartments();
+    List<Department> getDepartments();
 
-    List<DeptManager> getDeptManager();
-
-
+    int updateDeptNameByDeptNo();
 }

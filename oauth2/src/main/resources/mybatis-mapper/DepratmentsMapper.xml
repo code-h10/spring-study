@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.oauth2.repository.DepartmentsRepository">
+
+    <select id="getDepartments" resultType="com.spring.oauth2.domain.Department">
+        SELECT * FROM departments WHERE dept_no  = 'd009'
+    </select>
+
+    <update id="updateDeptNameByDeptNo">
+        UPDATE departments
+        SET dept_name = '3333'
+        WHERE dept_no  = 'd009'
+    </update>
+
+
+
+</mapper>

@@ -5,4 +5,10 @@
     <select id="getDepartments" parameterType="java.util.Map" resultType="java.util.Map">
         SELECT * FROM employees.departments
     </select>
+
+    <select id="getDeptManager" parameterType="java.util.Map" resultType="com.spring.batch.domain.DeptManager">
+        SELECT * FROM employees.dept_manager;
+    </select>
+
+
 </mapper>
