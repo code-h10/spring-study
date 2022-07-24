@@ -13,7 +13,7 @@ public interface UserRepository {
     Map getUserById(String id);
 
     void insertResetPasswordToken(Map params);
-    void updateUserPasswordById(Map params);
+    void updateUserPasswordByUserId(Map params);
 
     Map getResetPasswordToken(String token);
 }

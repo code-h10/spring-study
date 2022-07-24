@@ -60,8 +60,7 @@ public class UserService {
         if (resetToken.isEmpty()) {
             return Response.failure("Token Expiration");
         }
-
-        userRepository.updateUserPasswordById(params);
+        userRepository.updateUserPasswordByUserId(params);
         return Response.success(200, true, "", null);
     }
 

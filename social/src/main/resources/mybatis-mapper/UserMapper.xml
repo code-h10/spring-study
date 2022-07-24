@@ -7,10 +7,10 @@
         WHERE email = #{email}
     </select>
 
-    <update id="updateUserPasswordById" parameterType="java.util.HashMap">
+    <update id="updateUserPasswordByUserId" parameterType="java.util.HashMap">
         UPDATE users
         SET password = #{password}
-        WHERE id = #{id}
+        WHERE id = #{user_id}
     </update>
 
     <insert id="insertResetPasswordToken">
