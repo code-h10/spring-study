@@ -20,7 +20,8 @@
     </insert>
 
     <select id="getResetPasswordToken" parameterType="java.lang.String" resultType="java.util.HashMap">
-        SELECT * FROM user_reset_password_token
+        SELECT user_id, token FROM user_reset_password_token
         WHERE token = #{token}
+        AND expire_date <![CDATA[ <= ]]>  NOW(6)
     </select>
 </mapper>

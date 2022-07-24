@@ -15,14 +15,14 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/password")
-    public Response findUserPassword(@RequestParam String email) {
+    public Response getUserPassword(@RequestParam String email) {
         return userService.findUserPassword(email);
     }
 
 
     @PostMapping("/password/token")
-    public Response validateResetPasswordToken(@RequestBody Map params) {
-        return userService.validateResetPasswordToken(params);
+    public Response getResetPasswordToken(@RequestBody Map params) {
+        return userService.findResetPasswordToken(params);
     }
 
     @PostMapping("/password/reset")

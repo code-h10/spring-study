@@ -9,10 +9,7 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -23,8 +20,7 @@ public class UserService {
     public Response findUserPassword(String email) {
 
         Map users = userRepository.getUserByEmail(email);
-
-        if (Objects.isNull(users)) {
+        if (users == null) {
             log.error("User Not Found");
             return Response.failure("User Not Found");
         }
@@ -49,34 +45,35 @@ public class UserService {
 
     }
 
-
-    public Response validateResetPasswordToken(Map params) {
-
-        Map resetToken = userRepository.getResetPasswordToken(params.get("token").toString());
-
-        if (Objects.isNull(resetToken)) {
-            log.error("Token Not Found");
-            return Response.failure("User Not Found");
-        }
-
-        if (isResetTokenExpired(resetToken)) {
-            log.error("Token Expiration");
+    public Response findResetPasswordToken(Map params) {
+        Map resetToken = validateResetPasswordToken(params);
+        if (resetToken.isEmpty()) {
             return Response.failure("Token Expiration");
         }
         return Response.success(200, true, "", resetToken);
     }
 
+
     public Response resetUserPasswordById(Map params) {
 
-        Response response = validateResetPasswordToken(params);
-        if (response.getCode() != 200) {
-            return response;
+        Map resetToken = validateResetPasswordToken(params);
+        if (resetToken.isEmpty()) {
+            return Response.failure("Token Expiration");
         }
 
         userRepository.updateUserPasswordById(params);
         return Response.success(200, true, "", null);
     }
 
+    private Map validateResetPasswordToken(Map params)  {
+
+        Map resetToken = userRepository.getResetPasswordToken(params.get("token").toString());
+        if (resetToken == null) {
+            log.error("Token Expiration");
+            return Collections.emptyMap();
+        }
+        return resetToken;
+    }
 
     private boolean isResetTokenExpired(Map resetToken) {
         return LocalDateTime.now().isAfter(LocalDateTime.parse(resetToken.get("token").toString()));
