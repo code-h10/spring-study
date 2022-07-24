@@ -27,7 +27,7 @@ public class UserController {
 
     @PostMapping("/password/reset")
     public Response resetUserPassword(@RequestBody Map params) {
-        return userService.resetUserPasswordById(params);
+        return userService.resetUserPasswordByUserId(params);
     }
 
 }

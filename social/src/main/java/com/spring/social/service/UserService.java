@@ -54,7 +54,7 @@ public class UserService {
     }
 
 
-    public Response resetUserPasswordById(Map params) {
+    public Response resetUserPasswordByUserId(Map params) {
 
         Map resetToken = validateResetPasswordToken(params);
         if (resetToken.isEmpty()) {
