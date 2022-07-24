@@ -1,0 +1,46 @@
+spring:
+  datasource:
+      url: jdbc:mysql://localhost:3306/employees?
+      username: root
+      password: ghkd6016
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  security:
+    user:
+      name: 1234
+      password: 1234
+---
+mybatis:
+  configuration.map-underscore-to-camel-case: true
+  mapper-locations: mybatis-mapper/*.xml
+  lazy-initialization: true
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+
+---
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1074980125481-thdrvlfvjm3d9m08qnqsruog7kii12n0.apps.googleusercontent.com
+            client-secret: EKLsBGvJqVPRp5ZF48r2APzQ
+            scope:
+              - profile
+              - email
+          facebook:
+            client-id: 331468548897943
+            client-secret: 9e11789451f331e5a3c555328f3bef55
+#          kakao:
+#            client-id: cc324f7d4017583a32f029307769fe44
+#            client-secret: 9eEIYAc7s50n9EYnddzWcVVicQ2FZZQw
+
+---
+customer:
+    oauth2:
+      kakao:
+        client-id: cc324f7d4017583a32f029307769fe44
+        client-secret: 9eEIYAc7s50n9EYnddzWcVVicQ2FZZQw

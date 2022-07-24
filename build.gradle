@@ -45,6 +45,12 @@ project (':oauth2') {
     }
 }
 
+project (':social') {
+    dependencies {
+        implementation project(':common')
+    }
+}
+
 project (':sportch') {
     dependencies {
         implementation project(':common')

@@ -4,4 +4,5 @@ include 'football'
 include 'common'
 include 'batch'
 include 'sportch'
+include 'social'
 

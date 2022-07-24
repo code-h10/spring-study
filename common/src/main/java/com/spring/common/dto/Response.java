@@ -21,6 +21,14 @@ public class Response<T> {
                 .build();
     }
 
+    public static <T> Response<T> failure(String message) {
+        return Response.<T>builder()
+                .code(400)
+                .status(false)
+                .message(message)
+                .build();
+    }
+
     public static <T> Response<T> success(int code, boolean status, String message, T data) {
         return Response.<T>builder()
                 .code(code)
