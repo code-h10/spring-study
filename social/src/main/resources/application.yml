@@ -26,17 +26,32 @@ spring:
       client:
         registration:
           google:
+            account-host: https://accounts.google.com/o/oauth2/v2/auth
+            oauth-host: https://oauth2.googleapis.com
+            api-host: https://www.googleapis.com
             client-id: 1074980125481-thdrvlfvjm3d9m08qnqsruog7kii12n0.apps.googleusercontent.com
             client-secret: EKLsBGvJqVPRp5ZF48r2APzQ
-            scope:
-              - profile
-              - email
+            redirect-uri: http://localhost:8080/api/v1/user/callback/google
+            scope: email openid profile
+            state: st=142,ds=241
+            access_type: online
           facebook:
-            client-id: 331468548897943
-            client-secret: 9e11789451f331e5a3c555328f3bef55
-#          kakao:
-#            client-id: cc324f7d4017583a32f029307769fe44
-#            client-secret: 9eEIYAc7s50n9EYnddzWcVVicQ2FZZQw
+            oauth-host: https://www.facebook.com/v14.0/dialog/oauth
+            graph-host: https://graph.facebook.com
+            client-id: 541235814154575
+            client-secret: 1eb6eb10b64c00b2b13f328b678f105d
+            redirect-uri: http://localhost:8080/api/v1/user/callback/facebook
+            scope: email,user_birthday,user_gender
+            state: st=142412,ds=41242
+          kakao:
+            oauth-host: https://kauth.kakao.com/oauth/authorize
+            kapi-host: https://kapi.kakao.com
+            client-id: cc324f7d4017583a32f029307769fe44
+            client-secret: 9eEIYAc7s50n9EYnddzWcVVicQ2FZZQw
+            redirect-uri: http://localhost:8080/api/v1/user/callback/kakao
+            state: st=142412,ds=41242
+          apple:
+            oauth-host: https://appleid.apple.com/auth/authorize
 
 ---
 customer:

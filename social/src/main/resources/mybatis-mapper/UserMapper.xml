@@ -3,7 +3,7 @@
 <mapper namespace="com.spring.social.repository.UserRepository">
 
     <select id="getUserByEmail" parameterType="java.lang.String" resultType="java.util.HashMap">
-        SELECT id, email FROM users
+        SELECT id, email, create_date FROM users
         WHERE email = #{email}
     </select>
 
