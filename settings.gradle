@@ -5,4 +5,5 @@ include 'common'
 include 'batch'
 include 'sportch'
 include 'social'
+include 'filter'
 

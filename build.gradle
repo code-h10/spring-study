@@ -63,4 +63,9 @@ project (':batch') {
     }
 }
 
+project (':filter') {
+    dependencies {
+        implementation project(':common')
+    }
+}
 
