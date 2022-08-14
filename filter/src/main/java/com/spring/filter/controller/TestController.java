@@ -235,8 +235,13 @@ public class TestController {
 
     @GetMapping("/test/map")
     public Map getMap(@RequestParam Map params) {
-//        testService.findUserById(Integer.parseInt(params.get("id").toString()));
-        return params;
+        return testService.findUserById(Integer.parseInt(params.get("id").toString()));
+    }
+
+
+    @PostMapping("/test/user")
+    public void setUser(@RequestBody Map user) {
+        testService.setUser(user);
     }
 }
 

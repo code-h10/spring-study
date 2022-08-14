@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.filter.repository.TestRepository">
 
-  <select id="findUserById" parameterType="java.lang.Integer" resultType="java.util.Map">
+  <select id="findUserById" parameterType="java.lang.Integer" resultType="java.util.HashMap">
     SELECT * FROM users WHERE id = #{id}
   </select>
+
+  <insert id="setUser" parameterType="java.util.Map">
+    INSERT INTO study.users (name, phone_number, address, age) VALUES(#{name}, #{phoneNumber}, #{address}, 0)
+  </insert>
 
 </mapper>

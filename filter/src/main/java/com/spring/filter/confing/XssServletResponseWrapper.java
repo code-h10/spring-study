@@ -40,15 +40,16 @@ public class XssServletResponseWrapper extends HttpServletResponseWrapper {
 
 
     public byte[] getByteArrayOutputStream(HttpServletResponse httpServletResponse) {
-        if(httpServletResponse.getHeader("Content-Disposition").contains("attachment")) {
+        if(hasContentDisposition(httpServletResponse)) {
             return byteArrayOutputStream.toByteArray();
         } else {
             return StringUtils.unescape(byteArrayOutputStream.toByteArray());
         }
     }
 
-
-
+    private boolean hasContentDisposition(HttpServletResponse httpServletResponse) {
+        return httpServletResponse.containsHeader("Content-Disposition");
+    }
 
 
     public class XssServletOutputStream extends ServletOutputStream {

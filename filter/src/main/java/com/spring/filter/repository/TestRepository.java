@@ -1,12 +1,14 @@
 package com.spring.filter.repository;
 
-import java.util.HashMap;
 import java.util.Map;
-import org.mapstruct.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
 public interface TestRepository {
 
+    Map findUserById(int id);
+
+    void setUser(Map user);
 }
