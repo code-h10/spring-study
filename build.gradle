@@ -68,3 +68,8 @@ project (':filter') {
     }
 }
 
+project (':logging') {
+    dependencies {
+        implementation project(':common')
+    }
+}

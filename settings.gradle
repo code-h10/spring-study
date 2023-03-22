@@ -6,4 +6,5 @@ include 'batch'
 include 'sportch'
 include 'social'
 include 'filter'
+include 'logging'
 
