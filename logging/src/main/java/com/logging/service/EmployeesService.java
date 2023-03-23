@@ -16,10 +16,12 @@ public class EmployeesService {
 
     public List<Map> getEmployees() {
         log.debug("all of employees");
+        log.info("all of employees");
         return employeesRepository.getEmployees();
     }
     public List<Map> getEmployeesByFirstName(String firstName) {
         log.debug("find employees by first name");
+        log.info("find employees by first name");
         return employeesRepository.getEmployeesByFirstName(firstName);
     }
 }

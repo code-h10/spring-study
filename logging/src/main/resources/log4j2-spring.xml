@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Properties>
-        <Property name="logName">Spring Log4j2</Property>
-        <Property name="layoutPattern">%style{%d{yyyy/MM/dd HH:mm:ss,SSS}}{cyan} %highlight{[%-5p]}{FATAL=bg_red, ERROR=red,
-            INFO=green, DEBUG=blue}  [%C] %style{[%t]}{yellow} %m%n</Property>
+        <Property name="logNm">Study Log4j2</Property>
+        <Property name="layoutPattern">%style{%d}{cyan} %highlight{[%-5p]}{FATAL=bg_red, ERROR=red, INFO=green, DEBUG=blue}  [%-5c{1.}] %style{[%t]}{yellow} %m%n</Property>
     </Properties>
     <Appenders>
-        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+        <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="${layoutPattern}"/>
         </Console>
-        <RollingFile name="FileAppender" fileName="logs/${logNm}.log" filePattern="logs/${logNm}_%d{yyyy-MM-dd}_%i.log.gz">
+        <RollingFile name="File" fileName="logs/${logNm}.log" filePattern="logs/${logNm}_%d{yyyy-MM-dd}_%i.log.gz">
             <PatternLayout pattern="${layoutPattern}"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="100KB"/>
+                <SizeBasedTriggeringPolicy size="1000KB"/>
                 <TimeBasedTriggeringPolicy interval="1"/>
             </Policies>
             <DefaultRolloverStrategy max="10" fileIndex="min"/>
@@ -20,16 +19,16 @@
     </Appenders>
     <Loggers>
         <Root level="INFO" additivity="false">
-            <AppenderRef ref="ConsoleAppender"/>
-            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
         </Root>
         <Logger name="org.springframework" level="DEBUG" additivity="false">
-            <AppenderRef ref="ConsoleAppender" />
-            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="File"/>
         </Logger>
-        <Logger name="org.springframework" level="TRACE" additivity="false">
-            <AppenderRef ref="ConsoleAppender" />
+        <Logger name="com.logging" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"  />
+            <AppenderRef ref="File"/>
         </Logger>
     </Loggers>
 </Configuration>
-
