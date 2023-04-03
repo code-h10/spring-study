@@ -73,3 +73,9 @@ project (':logging') {
         implementation project(':common')
     }
 }
+
+project (':session') {
+    dependencies {
+        implementation project(':common')
+    }
+}

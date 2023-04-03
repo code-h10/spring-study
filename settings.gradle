@@ -7,4 +7,5 @@ include 'sportch'
 include 'social'
 include 'filter'
 include 'logging'
+include 'session'
 
