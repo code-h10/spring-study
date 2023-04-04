@@ -1,11 +1,12 @@
 package com.binary.session.controller;
 
+import com.binary.session.dto.LoginForm;
+import com.binary.session.model.User;
+import com.binary.session.service.UserService;
 import com.spring.common.dto.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,31 +16,40 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.isNull;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/session")
-public class SessionController {
+public class SessionLoginController {
 
+    private final UserService userService;
 
-    @GetMapping("/login/v1")
-    public Response<String> loginV1(HttpServletRequest request, HttpServletResponse response) {
+    @PostMapping("/login/v1")
+    public Response<User> loginV1(@RequestBody LoginForm loginForm, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        Map user = new HashMap();
-        user.put("id", "test@gmail.com");
-        user.put("password", "code10");
+
+        User user = userService.getByEmailAndPassword(loginForm.getEmail(), loginForm.getPassword());
+        if (isNull(user)) {
+            return Response.success(400, false, "Not Found User", null);
+        }
+
         session.setAttribute("JSESSIONID", user);
-        return Response.success(200, true, "success",null);
+        return Response.success(200, true, "success", user);
     }
 
     @GetMapping("/login/v2")
-    public Response<String> loginV2(HttpServletRequest request, HttpServletResponse response) {
+    public Response<User> loginV2(@RequestBody LoginForm loginForm, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true);
-        Map user = new HashMap();
-        user.put("id", "test@gmail.com");
-        user.put("password", "code10");
+
+        User user = userService.getByEmailAndPassword(loginForm.getEmail(), loginForm.getPassword());
+        if (isNull(user)) {
+            return Response.success(400, false, "Not Found User", null);
+        }
+
         session.setAttribute("JSESSIONID", user);
-        return Response.success(200, true, "success",null);
+        return Response.success(200, true, "success", user);
     }
 
     @GetMapping("/logout")
@@ -52,10 +62,10 @@ public class SessionController {
 
 
     @GetMapping("/info")
-    public Response getSession(HttpServletRequest request) {
+    public Response<String> getSession(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession(false);
-        Map user = (Map) session.getAttribute("JSESSIONID");
+        User user = (User) session.getAttribute("JSESSIONID");
 
         log.info("sessionId={}", session.getId());
         log.info("getMaxInactiveInterval={}", session.getMaxInactiveInterval());
