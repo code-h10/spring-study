@@ -1,6 +1,6 @@
 package com.spring.oauth2.service;
 
-import com.spring.oauth2.domain.Department;
+import com.spring.oauth2.model.Department;
 import com.spring.oauth2.repository.DepartmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

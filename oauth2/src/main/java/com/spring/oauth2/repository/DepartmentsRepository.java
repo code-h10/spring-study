@@ -1,7 +1,7 @@
 package com.spring.oauth2.repository;
 
 
-import com.spring.oauth2.domain.Department;
+import com.spring.oauth2.model.Department;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

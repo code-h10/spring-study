@@ -1,4 +1,4 @@
-package com.spring.oauth2.domain;
+package com.spring.oauth2.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
