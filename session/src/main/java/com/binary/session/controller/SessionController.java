@@ -59,7 +59,7 @@ public class SessionController {
 
         log.info("sessionId={}", session.getId());
         log.info("getMaxInactiveInterval={}", session.getMaxInactiveInterval());
-        log.info("creationTime={}", LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
+        log.info("creationTime={}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
         log.info("isNew={}", session.isNew());
         log.info("userInfo={}", user);
 
