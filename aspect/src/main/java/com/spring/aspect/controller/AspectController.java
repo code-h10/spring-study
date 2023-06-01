@@ -1,7 +1,6 @@
 package com.spring.aspect.controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ public class AspectController {
 
     @GetMapping("/apple")
     public ResponseEntity<String> getApple(HttpServletRequest request) {
-        return new ResponseEntity<>("apple", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/apple")
