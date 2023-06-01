@@ -21,14 +21,14 @@ subprojects {
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-        implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
+//        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+//        implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
         implementation 'org.mapstruct:mapstruct:1.4.2.Final'
         implementation group: 'org.springframework', name: 'spring-aspects', version: '5.3.20'
         annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
         compileOnly 'org.projectlombok:lombok'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
-        runtimeOnly 'mysql:mysql-connector-java'
+//        runtimeOnly 'mysql:mysql-connector-java'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
@@ -75,6 +75,12 @@ project (':logging') {
 }
 
 project (':session') {
+    dependencies {
+        implementation project(':common')
+    }
+}
+
+project (':aspect') {
     dependencies {
         implementation project(':common')
     }
