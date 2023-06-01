@@ -24,12 +24,12 @@ public class LoggingAspect {
 
     @AfterReturning("getMappingMethods() || postMappingMethods() || putMappingMethods()")
     public void afterMappingMethods() {
-        System.out.println("zzz1");
+        log.info("AfterReturning...");
     }
 
     @AfterThrowing(pointcut = "getMappingMethods() || postMappingMethods() || putMappingMethods()", throwing = "ex")
     public void afterThrowingMappingMethods(Exception ex) {
-        System.out.println("zzz2");
+        log.info("AfterThrowing...");
     }
 
 
